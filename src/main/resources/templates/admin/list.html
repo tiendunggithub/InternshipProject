@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Quản lý khách hàng</title>
+</head>
+<body>
+<div class="container">
+		<div class="col-md-offset-1 col-md-10">
+			<hr />
+			<input type="button" value="Add Customer"
+				onclick="window.location.href='showForm'; return false;"
+				class="btn btn-primary" /> <br />
+			<br />
+			<div>
+				 <form>
+				        Tìm kiếm theo tên:
+				        <input name="s" type="text"/>
+				        <input type="submit" value="Search"/>
+				    </form>
+				<br/>
+				</div>
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="panel-title">Danh sách</div>
+				</div>
+				<div class="panel-body">
+					<table class="table table-striped table-bordered">
+						<tr>
+							<th>họ tên</th>
+							<th>Tên đăng nhập</th>
+							<th>Mật khẩu</th>
+							
+							
+							<th></th>
+						</tr>
+						<th:block th:each="admin : ${admins.content}">
+							<tr>
+								<td th:text="${admin.name}"></td>
+								<td th:text="${admin.username}"></td>
+								<td th:text="${admin.pass}"></td>
+								
+								
+								<td>
+									<a th:href="@{updateForm/__${admin.id}__}">Cập nhật</a>
+									<a th:href="@{deleteLink/__${admin.id}__}">Xóa</a>
+								</td>
+							</tr>
+						</th:block>
+					</table>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
